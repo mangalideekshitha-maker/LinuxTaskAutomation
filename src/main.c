@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "../include/input.h"
 int main()
 {
-    char input[1024];
+    char *input;
 
     printf("========================================\n");
     printf("     Linux Task Automation Platform\n");
@@ -14,14 +14,11 @@ int main()
     {
         printf("task> ");
 
-        if (fgets(input, sizeof(input), stdin) == NULL)
-            break;
-
-        input[strcspn(input, "\n")] = '\0';
-
+        input = read_line();
         if (strcmp(input, "exit") == 0)
         {
             printf("Exiting Linux Task Automation Platform...\n");
+            free(input);
             break;
         }
 
@@ -59,7 +56,7 @@ int main()
         {
             printf("Unknown task: %s\n", input);
             printf("Type 'list' to see available tasks.\n");
-        }
+        }free(input);
     }
 
     return 0;
