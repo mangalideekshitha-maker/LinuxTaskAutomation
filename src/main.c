@@ -3,12 +3,12 @@
 #include <string.h>
 #include "../include/input.h"
 #include "../include/parser.h"
+#include "../include/process.h"
 
 int main()
 {
     char *input;
     char **tokens;
-    int i;
 
     printf("=====================================\n");
     printf("Linux Task Automation Platform\n");
@@ -36,47 +36,20 @@ int main()
             continue;
         }
 
-        printf("\nParsed Tokens\n");
-
-        for (i = 0; tokens[i] != NULL; i++)
-        {
-            printf("argv[%d] = %s\n", i, tokens[i]);
-        }
-
         if (strcmp(tokens[0], "list") == 0)
         {
-            printf("\nAvailable Tasks:\n");
-            printf("1. files   - List files\n");
+            printf("\nAvailable Linux Commands:\n");
+            printf("1. ls      - List files\n");
             printf("2. pwd     - Show current directory\n");
             printf("3. date    - Show system date\n");
-            printf("4. memory  - Show memory information\n");
-            printf("5. disk    - Show disk usage\n");
-            printf("6. exit    - Exit platform\n");
-        }
-        else if (strcmp(tokens[0], "files") == 0)
-        {
-            system("ls");
-        }
-        else if (strcmp(tokens[0], "pwd") == 0)
-        {
-            system("pwd");
-        }
-        else if (strcmp(tokens[0], "date") == 0)
-        {
-            system("date");
-        }
-        else if (strcmp(tokens[0], "memory") == 0)
-        {
-            system("free -h");
-        }
-        else if (strcmp(tokens[0], "disk") == 0)
-        {
-            system("df -h");
+            printf("4. whoami  - Show current user\n");
+            printf("5. free -h - Show memory information\n");
+            printf("6. df -h   - Show disk usage\n");
+            printf("7. exit    - Exit platform\n");
         }
         else
         {
-            printf("\nUnknown task: %s\n", tokens[0]);
-            printf("Type 'list' to see available tasks.\n");
+            execute(tokens);
         }
 
         free_tokens(tokens);
