@@ -6,12 +6,13 @@
 #include "../include/parser.h"
 #include "../include/process.h"
 #include "../include/builtin.h"
+#include "../include/signals.h"
 
 int main()
 {
     char *input;
     char **tokens;
-
+    initialize_signals();
     printf("=====================================\n");
     printf("Linux Task Automation Platform\n");
     printf("=====================================\n");

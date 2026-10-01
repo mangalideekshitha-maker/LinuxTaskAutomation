@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <signal.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
@@ -13,6 +14,7 @@ int execute(char **tokens)
 
     if (pid == 0)
     {
+        signal(SIGINT, SIG_DFL);
         if (execvp(tokens[0], tokens) == -1)
         {
             perror("LinuxTaskAutomation");

@@ -57,3 +57,10 @@ make clean
 - env
 - Built-in commands execute in the parent process
 - External commands continue to use fork(), execvp(), and waitpid()
+## Week 6 Features
+
+- Signal handling
+- SIGINT support
+- SIGCHLD support
+- Zombie cleanup
+- Shell survives Ctrl+C
