@@ -64,3 +64,10 @@ make clean
 - SIGCHLD support
 - Zombie cleanup
 - Shell survives Ctrl+C
+## Week 7 Features
+
+- Anonymous pipes
+- pipe()
+- dup2()
+- Two-command pipelines
+- IPC using file descriptors
