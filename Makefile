@@ -1,15 +1,9 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -g -Iinclude
+CC=gcc
+CFLAGS=-Wall -Wextra -g -Iinclude
 
-SRC = src/main.c \
-      src/input.c \
-      src/parser.c \
-      src/process.c \
-      src/builtin.c \
-      src/signals.c \
-      src/pipes.c
+SRC=src/main.c src/input.c src/parser.c src/process.c src/builtin.c src/signals.c src/pipes.c
 
-TARGET = bin/linux_task_automation
+TARGET=bin/linux_task_automation
 
 all: $(TARGET)
 
@@ -17,8 +11,15 @@ $(TARGET): $(SRC)
 	mkdir -p bin
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
 
-run:
+run: $(TARGET)
 	./$(TARGET)
+
+valgrind: $(TARGET)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET)
+
+asan:
+	mkdir -p bin
+	$(CC) $(CFLAGS) -fsanitize=address -fno-omit-frame-pointer $(SRC) -o $(TARGET)
 
 clean:
 	rm -rf bin/*
