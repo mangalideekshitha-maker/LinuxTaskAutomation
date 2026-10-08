@@ -17,7 +17,7 @@ valgrind: $(TARGET)
 
 asan:
 	mkdir -p bin
-	$(CC) $(CFLAGS) -fsanitize=address -fno-omit-frame-pointer $(SRC) -o $(TARGET)
+	$(CC) $(CFLAGS) -fsanitize=address -fno-omit-frame-pointer $(SRC) -pthread -o $(TARGET)
 
 clean:
 	rm -rf bin/*

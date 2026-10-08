@@ -10,6 +10,7 @@
 #include "../include/signals.h"
 #include "../include/pipes.h"
 #include "../include/thread.h"
+
 static void tokenize_command(char *str, char **argv)
 {
     int i = 0;
@@ -31,6 +32,7 @@ int main()
 
     initialize_signals();
     start_monitor_thread();
+
     printf("=====================================\n");
     printf("Linux Task Automation Platform\n");
     printf("=====================================\n");
@@ -84,6 +86,17 @@ int main()
 
         if (tokens[0] == NULL)
         {
+            free_tokens(tokens);
+            free(input);
+            continue;
+        }
+
+        /*
+         * Week 10 thread demonstration
+         */
+        if (strcmp(tokens[0], "threaddemo") == 0)
+        {
+            run_thread_demo();
             free_tokens(tokens);
             free(input);
             continue;
