@@ -9,7 +9,7 @@
 #include "../include/builtin.h"
 #include "../include/signals.h"
 #include "../include/pipes.h"
-
+#include "../include/thread.h"
 static void tokenize_command(char *str, char **argv)
 {
     int i = 0;
@@ -30,7 +30,7 @@ int main()
     char **tokens;
 
     initialize_signals();
-
+    start_monitor_thread();
     printf("=====================================\n");
     printf("Linux Task Automation Platform\n");
     printf("=====================================\n");
