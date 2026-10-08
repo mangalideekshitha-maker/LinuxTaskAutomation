@@ -4,6 +4,7 @@
 
 #include "../include/input.h"
 #include "../include/parser.h"
+#include "../include/redirect.h"
 #include "../include/process.h"
 #include "../include/builtin.h"
 #include "../include/signals.h"
@@ -94,9 +95,15 @@ int main()
         if (execute_builtin(tokens) == 0)
         {
             /*
-             * External Linux commands
+             * I/O Redirection
              */
-            execute(tokens);
+            if (execute_redirection(tokens) == 0)
+            {
+                /*
+                 * External Linux commands
+                 */
+                execute(tokens);
+            }
         }
 
         free_tokens(tokens);
