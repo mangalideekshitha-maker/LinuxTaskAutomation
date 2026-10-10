@@ -96,3 +96,15 @@ make clean
 - pthread_join()
 - Mutex synchronization
 - Race condition demonstration
+## Week 11 Features
+
+- Job control support 
+- Background process execution 
+- Job listing and management using `jobs`, `fg`, and `bg` 
+- Deadlock demonstration and prevention using POSIX threads 
+
+## Week 12 Features
+
+- Project documentation and final testing 
+- Updated README with project features and implementation details 
+- Final project verification and GitHub updates
